@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayZ - عرض توضيحي</title>
+    <link rel="stylesheet" href="css/playz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        .demo-section {
+            margin-bottom: 50px;
+        }
+        
+        .demo-section h2 {
+            margin-bottom: 20px;
+        }
+        
+        .demo-controls {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+        
+        .demo-controls button {
+            margin: 5px;
+            padding: 8px 15px;
+            background-color: #6200ea;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        
+        .demo-controls button:hover {
+            background-color: #7c4dff;
+        }
+        
+        .code-example {
+            background-color: #f8f8f8;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            direction: ltr;
+            text-align: left;
+            overflow-x: auto;
+        }
+        
+        .code-example code {
+            font-family: 'Courier New', monospace;
+            white-space: pre;
+        }
+        
+        .theme-selector {
+            margin-top: 20px;
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+        
+        .theme-option {
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            cursor: pointer;
+            border: 2px solid transparent;
+            transition: transform 0.2s;
+        }
+        
+        .theme-option:hover {
+            transform: scale(1.1);
+        }
+        
+        .theme-option.active {
+            border-color: #333;
+        }
+        
+        footer {
+            margin-top: 50px;
+            padding: 20px;
+            text-align: center;
+            background-color: #f5f5f5;
+            border-radius: 8px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>PlayZ - عرض توضيحي</h1>
+        <p>مشغل فيديو متقدم يتفوق على Plyr مع دعم تبديل الجودة اليدوي وتصميم أنيق وفخم</p>
+        
+        <div class="demo-section">
+            <h2>المشغل الأساسي</h2>
+            
+            <div class="playz-container" id="demo-player-1">
+                <div class="playz-wrapper">
+                    <video id="playz-player-1" playsinline>
+                        <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4" data-quality="576p">
+                        <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" data-quality="720p">
+                        <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" data-quality="1080p">
+                        <track kind="captions" label="English" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt" srclang="en" default>
+                    </video>
+                    
+                    <div class="playz-controls">
+                        <div class="playz-progress">
+                            <div class="playz-progress-bar">
+                                <div class="playz-progress-indicator"></div>
+                            </div>
+                            <div class="playz-time-tooltip">00:00</div>
+                        </div>
+                        
+                        <div class="playz-buttons">
+                            <div class="playz-left">
+                                <button class="playz-play-pause">
+                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <button class="playz-volume">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <div class="playz-volume-slider">
+                                    <div class="playz-volume-progress">
+                                        <div class="playz-volume-indicator"></div>
+                                    </div>
+                                </div>
+                                <div class="playz-time">
+                                    <span class="playz-current-time">00:00</span>
+                                    <span class="playz-time-separator">/</span>
+                                    <span class="playz-duration">00:00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="playz-right">
+                                <div class="playz-quality-selector">
+                                    <button class="playz-quality-btn">
+                                        <span class="playz-current-quality">720p</span>
+                                        <i class="fas fa-chevron-down"></i>
+                                    </button>
+                                    <div class="playz-quality-menu">
+                                        <button data-quality="1080p">1080p</button>
+                                        <button data-quality="720p">720p</button>
+                                        <button data-quality="576p">576p</button>
+                                    </div>
+                                </div>
+                                <button class="playz-captions">
+                                    <i class="fas fa-closed-captioning"></i>
+                                </button>
+                                <button class="playz-settings">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                                <button class="playz-pip">
+                                    <i class="fas fa-compress"></i>
+                                </button>
+                                <button class="playz-fullscreen">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="demo-controls">
+                <h3>التحكم البرمجي</h3>
+                <button id="play-btn">تشغيل</button>
+                <button id="pause-btn">إيقاف</button>
+                <button id="mute-btn">كتم الصوت</button>
+                <button id="unmute-btn">إلغاء كتم الصوت</button>
+                <button id="quality-576p">جودة 576p</button>
+                <button id="quality-720p">جودة 720p</button>
+                <button id="quality-1080p">جودة 1080p</button>
+            </div>
+            
+            <div class="theme-selector">
+                <h3>تغيير السمة</h3>
+                <div class="theme-option active" style="background-color: #6200ea;" data-primary="#6200ea" data-secondary="#b388ff"></div>
+                <div class="theme-option" style="background-color: #f50057;" data-primary="#f50057" data-secondary="#ff4081"></div>
+                <div class="theme-option" style="background-color: #2962ff;" data-primary="#2962ff" data-secondary="#82b1ff"></div>
+                <div class="theme-option" style="background-color: #00c853;" data-primary="#00c853" data-secondary="#69f0ae"></div>
+                <div class="theme-option" style="background-color: #ff6d00;" data-primary="#ff6d00" data-secondary="#ffab40"></div>
+            </div>
+            
+            <div class="code-example">
+                <h3>كود المثال</h3>
+                <code>
+// تهيئة المشغل
+const player = new PlayZ('#demo-player-1', {
+    autoplay: false,
+    muted: false,
+    volume: 0.8,
+    defaultQuality: '720p'
+});
+
+// التحكم البرمجي
+document.getElementById('play-btn').addEventListener('click', () => {
+    player.video.play();
+});
+
+document.getElementById('pause-btn').addEventListener('click', () => {
+    player.video.pause();
+});
+
+document.getElementById('mute-btn').addEventListener('click', () => {
+    player.video.muted = true;
+});
+
+document.getElementById('unmute-btn').addEventListener('click', () => {
+    player.video.muted = false;
+});
+
+// تغيير الجودة
+document.getElementById('quality-576p').addEventListener('click', () => {
+    player.setQuality('576p');
+});
+
+document.getElementById('quality-720p').addEventListener('click', () => {
+    player.setQuality('720p');
+});
+
+document.getElementById('quality-1080p').addEventListener('click', () => {
+    player.setQuality('1080p');
+});
+                </code>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>مشغل YouTube</h2>
+            
+            <div class="playz-container" id="youtube-player">
+                <div class="playz-wrapper">
+                    <div id="playz-youtube" data-plyr-provider="youtube" data-plyr-embed-id="bTqVqk7FSmY"></div>
+                    
+                    <div class="playz-controls">
+                        <div class="playz-progress">
+                            <div class="playz-progress-bar">
+                                <div class="playz-progress-indicator"></div>
+                            </div>
+                            <div class="playz-time-tooltip">00:00</div>
+                        </div>
+                        
+                        <div class="playz-buttons">
+                            <div class="playz-left">
+                                <button class="playz-play-pause">
+                                    <i class="fas fa-play"></i>
+                                    <i class="fas fa-pause"></i>
+                                </button>
+                                <button class="playz-volume">
+                                    <i class="fas fa-volume-up"></i>
+                                </button>
+                                <div class="playz-volume-slider">
+                                    <div class="playz-volume-progress">
+                                        <div class="playz-volume-indicator"></div>
+                                    </div>
+                                </div>
+                                <div class="playz-time">
+                                    <span class="playz-current-time">00:00</span>
+                                    <span class="playz-time-separator">/</span>
+                                    <span class="playz-duration">00:00</span>
+                                </div>
+                            </div>
+                            
+                            <div class="playz-right">
+                                <button class="playz-captions">
+                                    <i class="fas fa-closed-captioning"></i>
+                                </button>
+                                <button class="playz-settings">
+                                    <i class="fas fa-cog"></i>
+                                </button>
+                                <button class="playz-fullscreen">
+                                    <i class="fas fa-expand"></i>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <p class="note">ملاحظة: دعم YouTube سيتم تنفيذه في الإصدار القادم.</p>
+        </div>
+        
+        <div class="features">
+            <h2>مميزات PlayZ</h2>
+            <ul>
+                <li>تصميم أنيق وفخم</li>
+                <li>دعم تبديل الجودة اليدوي</li>
+                <li>دعم الترجمات</li>
+                <li>وضع ملء الشاشة</li>
+                <li>وضع صورة داخل صورة</li>
+                <li>تحكم كامل في الصوت</li>
+                <li>واجهة مستخدم سهلة الاستخدام</li>
+                <li>دعم HTML5 الكامل</li>
+                <li>متوافق مع جميع المتصفحات الحديثة</li>
+                <li>اختصارات لوحة المفاتيح</li>
+                <li>تصميم متجاوب</li>
+                <li>قابل للتخصيص بالكامل</li>
+            </ul>
+        </div>
+    </div>
+    
+    <footer>
+        <p>PlayZ - مشغل فيديو متقدم &copy; 2023</p>
+        <p><a href="https://github.com/yourusername/playz" target="_blank">GitHub</a> | <a href="LICENSE">الترخيص</a></p>
+    </footer>
+
+    <script src="js/playz.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // تهيئة المشغل الأساسي
+            const player1 = new PlayZ('#demo-player-1', {
+                autoplay: false,
+                muted: false,
+                volume: 0.8,
+                defaultQuality: '720p'
+            });
+            
+            // التحكم البرمجي
+            document.getElementById('play-btn').addEventListener('click', () => {
+                player1.video.play();
+            });
+            
+            document.getElementById('pause-btn').addEventListener('click', () => {
+                player1.video.pause();
+            });
+            
+            document.getElementById('mute-btn').addEventListener('click', () => {
+                player1.video.muted = true;
+            });
+            
+            document.getElementById('unmute-btn').addEventListener('click', () => {
+                player1.video.muted = false;
+            });
+            
+            // تغيير الجودة
+            document.getElementById('quality-576p').addEventListener('click', () => {
+                player1.setQuality('576p');
+            });
+            
+            document.getElementById('quality-720p').addEventListener('click', () => {
+                player1.setQuality('720p');
+            });
+            
+            document.getElementById('quality-1080p').addEventListener('click', () => {
+                player1.setQuality('1080p');
+            });
+            
+            // تغيير السمة
+            const themeOptions = document.querySelectorAll('.theme-option');
+            themeOptions.forEach(option => {
+                option.addEventListener('click', () => {
+                    // إزالة الفئة النشطة من جميع الخيارات
+                    themeOptions.forEach(opt => opt.classList.remove('active'));
+                    
+                    // إضافة الفئة النشطة للخيار المحدد
+                    option.classList.add('active');
+                    
+                    // تحديث متغيرات CSS
+                    document.documentElement.style.setProperty('--playz-primary', option.dataset.primary);
+                    document.documentElement.style.setProperty('--playz-secondary', option.dataset.secondary);
+                });
+            });
+            
+            // إضافة المشغل إلى النافذة للوصول إليه من خلال وحدة التحكم
+            window.player1 = player1;
+        });
+    </script>
+</body>
+</html>

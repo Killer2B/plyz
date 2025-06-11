@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PlayZ - مشغل فيديو متقدم</title>
+    <link rel="stylesheet" href="css/playz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1>PlayZ - مشغل فيديو متقدم</h1>
+        
+        <div class="playz-container" id="player-container">
+            <div class="playz-wrapper">
+                <video id="playz-player" playsinline>
+                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-576p.mp4" type="video/mp4" data-quality="576p">
+                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-720p.mp4" type="video/mp4" data-quality="720p">
+                    <source src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-1080p.mp4" type="video/mp4" data-quality="1080p">
+                    <track kind="captions" label="English" src="https://cdn.plyr.io/static/demo/View_From_A_Blue_Moon_Trailer-HD.en.vtt" srclang="en" default>
+                </video>
+                
+                <div class="playz-controls">
+                    <div class="playz-progress">
+                        <div class="playz-progress-bar">
+                            <div class="playz-progress-indicator"></div>
+                        </div>
+                        <div class="playz-time-tooltip">00:00</div>
+                    </div>
+                    
+                    <div class="playz-buttons">
+                        <div class="playz-left">
+                            <button class="playz-play-pause">
+                                <i class="fas fa-play"></i>
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button class="playz-volume">
+                                <i class="fas fa-volume-up"></i>
+                            </button>
+                            <div class="playz-volume-slider">
+                                <div class="playz-volume-progress">
+                                    <div class="playz-volume-indicator"></div>
+                                </div>
+                            </div>
+                            <div class="playz-time">
+                                <span class="playz-current-time">00:00</span>
+                                <span class="playz-time-separator">/</span>
+                                <span class="playz-duration">00:00</span>
+                            </div>
+                        </div>
+                        
+                        <div class="playz-right">
+                            <div class="playz-quality-selector">
+                                <button class="playz-quality-btn">
+                                    <span class="playz-current-quality">720p</span>
+                                    <i class="fas fa-chevron-down"></i>
+                                </button>
+                                <div class="playz-quality-menu">
+                                    <button data-quality="1080p">1080p</button>
+                                    <button data-quality="720p">720p</button>
+                                    <button data-quality="576p">576p</button>
+                                </div>
+                            </div>
+                            <button class="playz-captions">
+                                <i class="fas fa-closed-captioning"></i>
+                            </button>
+                            <button class="playz-settings">
+                                <i class="fas fa-cog"></i>
+                            </button>
+                            <button class="playz-pip">
+                                <i class="fas fa-compress"></i>
+                            </button>
+                            <button class="playz-fullscreen">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="features">
+            <h2>مميزات PlayZ</h2>
+            <ul>
+                <li>تصميم أنيق وفخم</li>
+                <li>دعم تبديل الجودة اليدوي</li>
+                <li>دعم الترجمات</li>
+                <li>وضع ملء الشاشة</li>
+                <li>وضع صورة داخل صورة</li>
+                <li>تحكم كامل في الصوت</li>
+                <li>واجهة مستخدم سهلة الاستخدام</li>
+                <li>دعم HTML5 الكامل</li>
+                <li>متوافق مع جميع المتصفحات الحديثة</li>
+            </ul>
+        </div>
+    </div>
+
+    <script src="js/playz.js"></script>
+</body>
+</html>
